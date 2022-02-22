@@ -48,15 +48,13 @@
                 <td>{{ evenement.lieu }}</td>
             
                 <td>
-                <a  href="{{ path('evenement_show', {'id': evenement.id}) }}"class="btn btn-success btn-circle ">
+                <a  href="{{ path('evenement_show', {'id': evenement.id}) }}"class="btn btn-success btn-circle btn-sm">
                                         <i class="fas fa-check"></i>
                                     </a>
-                 <a  href="{{ path('evenement_edit', {'id': evenement.id}) }}" class="btn btn-warning btn-circle ">
+                 <a  href="{{ path('evenement_edit', {'id': evenement.id}) }}" class="btn btn-warning btn-circle btn-sm">
                                         <i class="fas fa-exclamation-triangle"></i>
                                     </a>
-                                    <a href="{{ path('evenement_delete', {'id': evenement.id}) }}" class="btn btn-danger btn-circle">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
+                                    
                 
                 </td>
             </tr>
