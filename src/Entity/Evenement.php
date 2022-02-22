@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity(repositoryClass=EvenementRepository::class)
  */
@@ -18,22 +20,24 @@ class Evenement
     private $id;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
      */
     private $type;
 
-    /**
+      /**
      * @ORM\Column(type="date")
      */
     private $dateDebut;
 
-    /**
+      /**
      * @ORM\Column(type="date")
      */
     private $DateFin;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $lieu;
 

@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\TicketRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity(repositoryClass=TicketRepository::class)
  */
@@ -19,30 +21,39 @@ class Ticket
 
     /**
      * @ORM\Column(type="integer")
+
+     *  @Assert\NotNull
      */
     private $numero;
 
     /**
      * @ORM\Column(type="integer")
+
+     *  @Assert\NotNull
      */
     private $nombre;
 
     /**
      * @ORM\Column(type="string", length=255)
+
+     *  @Assert\NotNull
+     * @Assert\Length(min=3)
      */
     private $destination;
 
-    /**
+     /**
      * @ORM\Column(type="date")
      */
     private $Date;
 
-    /**
+   /**
      * @ORM\Column(type="date")
      */
     private $Heure;
         /**
      * @ORM\Column(type="integer")
+   
+  
      */
     private $id_evenement;
 

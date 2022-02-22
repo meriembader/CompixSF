@@ -33,13 +33,29 @@
            
         </tbody>
     </table>
+    <a href="{{ path('evenement_index') }}" class="btn btn-secondary btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                        <span class="text">Back To list</span>
+                                    </a>
+  &nbsp; 
+<a href="{{ path('evenement_edit', {'id': evenement.id}) }}" class="btn btn-warning btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </span>
+                                        <span class="text">Modifier</span>
+                                    </a>
+                                    <a  href="{{ path('evenement_delete', {'id': evenement.id}) }}" class="btn btn-danger btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                        <span class="text">Delete</span>
+                                    </a>
+
 </div>
                     </div>
 
                 </div>
-    <a href="{{ path('evenement_index') }}">back to list</a>
 
-    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">edit</a>
-
-    {{ include('evenement/_delete_form.html.twig') }}
 {% endblock %}
