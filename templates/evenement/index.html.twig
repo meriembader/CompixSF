@@ -15,7 +15,17 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                         </div>
+                    
+ 
                         <div class="card-body">
+                            <a href="{{ path('evenement_new') }}" class="btn btn-primary btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-flag"></i>
+                                        </span>
+                                        <span class="text">Create new</span>
+                                    </a>
+                                    <br>
+                                    <br>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                <thead>
@@ -38,8 +48,16 @@
                 <td>{{ evenement.lieu }}</td>
             
                 <td>
-                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">show</a>
-                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">edit</a>
+                <a  href="{{ path('evenement_show', {'id': evenement.id}) }}"class="btn btn-success btn-circle ">
+                                        <i class="fas fa-check"></i>
+                                    </a>
+                 <a  href="{{ path('evenement_edit', {'id': evenement.id}) }}" class="btn btn-warning btn-circle ">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </a>
+                                    <a href="{{ path('evenement_delete', {'id': evenement.id}) }}" class="btn btn-danger btn-circle">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                
                 </td>
             </tr>
         {% else %}
@@ -57,5 +75,4 @@
                 <!-- /.container-fluid -->
 
 
-    <a href="{{ path('evenement_new') }}">Create new</a>
 {% endblock %}

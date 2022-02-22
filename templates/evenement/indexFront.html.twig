@@ -4,8 +4,6 @@
 
 
 {% block body %}
- 
-
    <div class="container-fluid">
 
             
@@ -37,8 +35,8 @@
                 <td>{{ evenement.lieu }}</td>
             
                 <td>
-                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">show</a>
-                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">edit</a>
+                  <a  href="{{ path('ticket_new', {'id_evenement': evenement.id}) }}" class="filled-button">Acheter ticket</a>
+                  
                 </td>
             </tr>
         {% else %}

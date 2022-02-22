@@ -41,8 +41,16 @@
                                             <td>{{ ticket.Heure ? ticket.Heure|date('Y-m-d') : '' }}</td>
                                             <td>{{ ticket.idEvenement }}</td>
                                             <td>
-                                                <a href="{{ path('ticket_show', {'id': ticket.id}) }}">show</a>
-                                                <a href="{{ path('ticket_edit', {'id': ticket.id}) }}">edit</a>
+                                                         <a  href="{{ path('ticket_show', {'id': ticket.id}) }}"class="btn btn-success btn-circle ">
+                                        <i class="fas fa-check"></i>
+                                    </a>
+                 <a  href="{{ path('ticket_edit', {'id': ticket.id}) }}" class="btn btn-warning btn-circle ">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </a>
+                                    <a href="{{ path('ticket_delete', {'id': ticket.id}) }}" class="btn btn-danger btn-circle">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                
                                             </td>
                                         </tr>
                                     {% else %}
@@ -62,5 +70,5 @@
 
 
 
-    <a href="{{ path('ticket_new') }}">Create new</a>
+    
 {% endblock %}
