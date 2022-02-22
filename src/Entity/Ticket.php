@@ -1,0 +1,109 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\TicketRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass=TicketRepository::class)
+ */
+class Ticket
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $numero;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nombre;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $destination;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $Date;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $Heure;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNumero(): ?int
+    {
+        return $this->numero;
+    }
+
+    public function setNumero(int $numero): self
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    public function getNombre(): ?int
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre(int $nombre): self
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getDestination(): ?string
+    {
+        return $this->destination;
+    }
+
+    public function setDestination(string $destination): self
+    {
+        $this->destination = $destination;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->Date;
+    }
+
+    public function setDate(\DateTimeInterface $Date): self
+    {
+        $this->Date = $Date;
+
+        return $this;
+    }
+
+    public function getHeure(): ?\DateTimeInterface
+    {
+        return $this->Heure;
+    }
+
+    public function setHeure(\DateTimeInterface $Heure): self
+    {
+        $this->Heure = $Heure;
+
+        return $this;
+    }
+}
