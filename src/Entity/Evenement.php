@@ -37,10 +37,6 @@ class Evenement
      */
     private $lieu;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $id_ticket;
 
     public function getId(): ?int
     {
@@ -95,15 +91,5 @@ class Evenement
         return $this;
     }
 
-    public function getIdTicket(): ?int
-    {
-        return $this->id_ticket;
-    }
-
-    public function setIdTicket(int $id_ticket): self
-    {
-        $this->id_ticket = $id_ticket;
-
-        return $this;
-    }
+ 
 }

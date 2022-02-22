@@ -41,6 +41,10 @@ class Ticket
      * @ORM\Column(type="date")
      */
     private $Heure;
+        /**
+     * @ORM\Column(type="integer")
+     */
+    private $id_evenement;
 
     public function getId(): ?int
     {
@@ -103,6 +107,17 @@ class Ticket
     public function setHeure(\DateTimeInterface $Heure): self
     {
         $this->Heure = $Heure;
+
+        return $this;
+    }
+    public function getIdEvenement(): ?int
+    {
+        return $this->id_evenement;
+    }
+
+    public function setIdEvenement(int $id_evenement): self
+    {
+        $this->id_evenement = $id_evenement;
 
         return $this;
     }
