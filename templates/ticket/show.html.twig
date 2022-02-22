@@ -1,0 +1,52 @@
+{% extends 'layoutBackOffice.html.twig' %}
+{% block title %} Show des tickets{% endblock %}
+
+{% block body %}
+    <h1>Ticket</h1>
+    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
+                        <div class="card-body">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ticket.id }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ ticket.numero }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ ticket.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Destination</th>
+                <td>{{ ticket.destination }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ ticket.Date ? ticket.Date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{{ ticket.Heure ? ticket.Heure|date('Y-m-d') : '' }}</td>
+            </tr>
+             <tr>
+                <th>Id_ticket</th>
+                <td>{{ ticket.idEvenement }}</td>
+            </tr>
+        </tbody>
+    </table>
+ </div>
+                    </div>
+
+                </div>
+    <a href="{{ path('ticket_index') }}">back to list</a>
+
+    <a href="{{ path('ticket_edit', {'id': ticket.id}) }}">edit</a>
+
+    {{ include('ticket/_delete_form.html.twig') }}
+{% endblock %}

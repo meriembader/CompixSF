@@ -1,0 +1,61 @@
+{% extends 'layoutBackOffice.html.twig' %}
+
+{% block title %} Liste des Evenments{% endblock %}
+
+
+{% block body %}
+    <h1>Evenement index</h1>
+
+   <div class="container-fluid">
+
+            
+
+                
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                               <thead>
+                <th>Id</th>
+                <th>Type</th>
+                <th>DateDebut</th>
+                <th>DateFin</th>
+                <th>Lieu</th>
+        
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.id }}</td>
+                <td>{{ evenement.type }}</td>
+                <td>{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.DateFin ? evenement.DateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.lieu }}</td>
+            
+                <td>
+                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">show</a>
+                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+      </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+
+    <a href="{{ path('evenement_new') }}">Create new</a>
+{% endblock %}
