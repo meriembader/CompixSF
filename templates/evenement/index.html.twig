@@ -8,9 +8,6 @@
 
    <div class="container-fluid">
 
-            
-
-                
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
@@ -33,6 +30,10 @@
                                     <br>
                                     <br>
                             <div class="table-responsive">
+                                 <form method="post" action="{{ path('evenement_search') }}">
+                    <input type="text" name="evenement" placeholder="Evenement " />
+                    <input type="submit" value="chercher">
+                </form>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                <thead>
                 <th>Id</th>
