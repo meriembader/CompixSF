@@ -17,6 +17,10 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                             <form method="post" action="{{ path('Ticket_search') }}">
+                    <input type="text" name="ticket" placeholder="ticket " />
+                    <input type="submit" value="chercher">
+                </form>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                <thead>
                                     <tr>
