@@ -57,7 +57,26 @@ class TicketController extends AbstractController
             'ticket' => $ticket,
         ]);
     }
+/**
+     * @Route("/searchTicket", name="Ticket_search")
+     */
+    public function searchTicket(Request $request)
+    {
+        $ticket=   $request->get('ticket');
+        $em=$this->getDoctrine()->getManager();
+        if($ticket == ""){
+            $tickets=$em->getRepository(ticket::class)->findAll();
+        }else{
+            $tickets=$em->getRepository(ticket::class)->findBy(
+                ['numero'=> $ticket]
+            );
+        }
 
+        return $this->render('ticket/index.html.twig', array(
+            'tickets' => $tickets
+        ));
+
+    }
     /**
      * @Route("/{id}/edit", name="ticket_edit", methods={"GET", "POST"})
      */
