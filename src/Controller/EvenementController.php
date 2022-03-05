@@ -11,6 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+// Include Dompdf required namespaces
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 /**
  * @Route("/evenement")
  */
@@ -25,6 +29,48 @@ class EvenementController extends AbstractController
             'evenements' => $evenementRepository->findAll(),
         ]);
     }
+
+
+    /**
+     * @Route("/generatePdf", name="generatePdf", methods={"GET"})
+     */
+    public function pdf(EvenementRepository $evenementRepository): Response
+    {
+
+
+          // Configure Dompdf according to your needs
+          $pdfOptions = new Options();
+          $pdfOptions->set('defaultFont', 'Arial');
+          
+          // Instantiate Dompdf with our options
+          $dompdf = new Dompdf($pdfOptions);
+          $evenement = $evenementRepository->findAll();
+        
+          
+          // Retrieve the HTML generated in our twig file
+          $html = $this->renderView('evenement/generatePdf.html.twig', [
+            'evenements' => $evenement,
+        
+          ]);
+          
+          // Load HTML to Dompdf
+          $dompdf->loadHtml($html);
+          
+          // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+          $dompdf->setPaper('A4', 'portrait');
+  
+          // Render the HTML as PDF
+          $dompdf->render();
+  
+          // Output the generated PDF to Browser (force download)
+          $dompdf->stream("mypdf.pdf", [
+              "Attachment" => true
+          ]);
+      }
+      
+    
+
+
         /**
      * @Route("/EvenementFront", name="evenement_indexFront", methods={"GET"})
      */
@@ -35,6 +81,8 @@ class EvenementController extends AbstractController
         ]);
     }
 
+
+    
 
     /**
      * @Route("/new", name="evenement_new", methods={"GET", "POST"})
@@ -100,4 +148,7 @@ class EvenementController extends AbstractController
 
         return $this->redirectToRoute('evenement_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    
+  
 }
