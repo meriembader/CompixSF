@@ -81,7 +81,26 @@ class EvenementController extends AbstractController
         ]);
     }
 
+ /**
+     * @Route("/searchEvenement", name="evenement_search")
+     */
+    public function searchEvenement(Request $request)
+    {
+        $evenement=   $request->get('evenement');
+        $em=$this->getDoctrine()->getManager();
+        if($evenement == ""){
+            $evenements=$em->getRepository(Evenement::class)->findAll();
+        }else{
+            $evenements=$em->getRepository(Evenement::class)->findBy(
+                ['type'=> $evenement]
+            );
+        }
 
+        return $this->render('evenement/index.html.twig', array(
+            'evenements' => $evenements
+        ));
+
+    }
     
 
     /**
