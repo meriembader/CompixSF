@@ -16,6 +16,10 @@ class EvenementType extends AbstractType
             ->add('dateDebut')
             ->add('DateFin')
             ->add('lieu')
+            >add('rating', RatingType::class, [
+                'stars' => 5,
+
+            ]);
         
         ;
     }
